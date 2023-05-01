@@ -7,6 +7,18 @@
 
 #define NUM_LETTERS 26
 
+// Comando para limpar a tela do terminal
+#ifdef _WIN32
+#define CLEAR_SCREEN "cls"
+#else
+#define CLEAR_SCREEN "clear"
+#endif
+
+static void clear_screen()
+{
+    system(CLEAR_SCREEN);
+}
+
 static inline uint8_t ltr_idx(uint8_t ltr)
 {
     return (ltr - 'A') % NUM_LETTERS;
