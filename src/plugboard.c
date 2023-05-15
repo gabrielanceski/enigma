@@ -3,9 +3,9 @@
 /**
  * Cria uma placa de tomadas. (Steckerbrett)
  */
-plugboard_t *plugboard_create()
+struct plugboard *plugboard_new()
 {
-    plugboard_t *plugboard = (plugboard_t *)malloc(sizeof(plugboard_t));
+    struct plugboard *plugboard = (struct plugboard *)malloc(sizeof(struct plugboard));
     if (plugboard == NULL)
     {
         printf("Erro ao alocar memória para a placa de tomadas.");
@@ -18,7 +18,7 @@ plugboard_t *plugboard_create()
 /**
  * Define um par de tomadas à placa de tomadas.
  */
-void plugboard_pair(plugboard_t *plugboard, uint8_t a, uint8_t b)
+void plugboard_pair(struct plugboard *plugboard, uint8_t a, uint8_t b)
 {
     if (plugboard->num_pairs == MAX_PAIRS)
     {
@@ -50,7 +50,7 @@ void plugboard_pair(plugboard_t *plugboard, uint8_t a, uint8_t b)
 /**
  * Imprime a placa de tomadas
  */
-void plugboard_print(plugboard_t *plugboard)
+void plugboard_print(struct plugboard *plugboard)
 {
     printf("Placa de tomadas (%d pares):\n", plugboard->num_pairs);
     if (plugboard->num_pairs == 0)
@@ -68,7 +68,7 @@ void plugboard_print(plugboard_t *plugboard)
 /**
  * Envia um sinal adiante na placa de tomadas.
  */
-uint8_t plugboard_forward(plugboard_t *plugboard, uint8_t signal)
+uint8_t plugboard_forward(struct plugboard *plugboard, uint8_t signal)
 {
     if (plugboard->num_pairs > 0)
     {
